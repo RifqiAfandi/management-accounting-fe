@@ -1,0 +1,115 @@
+I. Data Display (Output)
+
+The system should be able to display the following information, corresponding to your Excel sheets:
+
+Daftar Akun (Chart of Accounts):
+
+Nomor Akun (Account Number)
+Nama Akun (Account Name)
+Kelompok Akun (Account Group)
+Posisi Saldo Normal (Normal Balance Position - Debet/Kredit)
+Bukti Transaksi (Transaction Evidence):
+
+Nomor Bukti (Evidence Number)
+Tanggal Transaksi (Transaction Date)
+Deskripsi (Description)
+Referensi (Reference - e.g., Invoice Number, Receipt Number)
+Jurnal Umum (General Journal):
+
+Tanggal (Date)
+No Bukti (Evidence Number)
+Deskripsi (Description)
+No Akun (Account Number)
+Nama Akun (Account Name)
+Debet (Debit Amount)
+Kredit (Credit Amount)
+Buku Besar (General Ledger):
+
+For each account, display:
+Tanggal (Date)
+Keterangan (Description)
+Ref (Reference)
+Debet (Debit)
+Kredit (Credit)
+Saldo (Balance - showing running balance)
+Neraca Saldo (Trial Balance):
+
+Nomor Akun (Account Number)
+Nama Akun (Account Name)
+Debet (Total Debit)
+Kredit (Total Credit)
+Total Debet/Kredit (Sum of Debits and Credits, should balance)
+Jurnal Penyesuaian (Adjusting Journal Entries):
+
+Similar format to Jurnal Umum, but specifically for adjustments.
+Neraca Saldo Setelah Penyesuaian (Adjusted Trial Balance):
+
+Similar format to Neraca Saldo, but reflecting adjustments.
+Kertas Kerja (Worksheet/Spreadsheet):
+
+A consolidated view showing:
+Neraca Saldo
+Jurnal Penyesuaian
+Neraca Saldo Setelah Penyesuaian
+Laporan Laba Rugi (Income Statement portion)
+Neraca (Balance Sheet portion)
+Laporan Laba Rugi (Income Statement):
+
+Pendapatan (Revenue accounts and their totals)
+Beban (Expense accounts and their totals)
+Laba/Rugi Bersih (Net Profit/Loss)
+Laporan Perubahan Modal (Statement of Changes in Equity): (Though not explicitly in your files, this is a crucial report, derived from Net Profit/Loss and owner's capital/drawings).
+
+Modal Awal (Beginning Capital)
+Laba Bersih (Net Profit) / Rugi Bersih (Net Loss)
+Prive (Drawings)
+Modal Akhir (Ending Capital)
+Neraca (Balance Sheet): (The 'Neraca' part of your 'Kertas Kerja' would form this report).
+
+Aset (Assets - Current and Non-Current)
+Liabilitas (Liabilities - Current and Non-Current)
+Ekuitas (Equity)
+Total Aset should equal Total Liabilitas + Ekuitas
+II. Data Input
+
+The system should provide intuitive forms for inputting the following:
+
+Input Akun Baru (New Account Input):
+
+Form fields: Nomor Akun, Nama Akun, Kelompok Akun, Posisi Saldo Normal.
+Validation: Ensure unique account numbers, validate account group and normal balance.
+Input Bukti Transaksi (Transaction Evidence Input):
+
+Form fields: Nomor Bukti, Tanggal Transaksi, Deskripsi, Referensi.
+This input primarily serves as a header for journal entries.
+Input Jurnal Umum (General Journal Entry Input):
+
+This is the core input for most transactions.
+Fields:
+Tanggal (Date - pre-filled or selectable)
+Nomor Bukti (Dropdown/lookup to select existing bukti transaksi or input new)
+Deskripsi Transaksi (Overall transaction description)
+Line Items (add multiple rows as needed for debit/credit):
+Nomor Akun (Dropdown/autocomplete to select from Daftar Akun)
+Nama Akun (Auto-populate based on selected Nomor Akun)
+Debet (Amount)
+Kredit (Amount)
+Validation:
+Ensure total debits equal total credits for each journal entry.
+Check for valid account numbers.
+Require a description.
+Input Jurnal Penyesuaian (Adjusting Journal Entry Input):
+
+Similar to Jurnal Umum input, but perhaps with a different transaction type or flag to distinguish.
+Fields: Tanggal, Nomor Bukti Penyesuaian, Deskripsi Penyesuaian, No Akun, Debet, Kredit.
+Validation: Same as Jurnal Umum.
+III. System Logic (Behind the Scenes)
+
+Posting to General Ledger: Automatically update the General Ledger balances after each General Journal and Adjusting Journal entry.
+Generating Trial Balance: Automatically compile the Trial Balance from the General Ledger.
+Generating Adjusted Trial Balance: Incorporate adjusting entries into the Trial Balance.
+Generating Financial Statements:
+Income Statement: Extract revenue and expense accounts from the Adjusted Trial Balance.
+Balance Sheet: Extract asset, liability, and equity accounts from the Adjusted Trial Balance (considering retained earnings/capital adjustments).
+Statement of Changes in Equity: Calculate based on beginning capital, net income/loss, and drawings.
+Reporting Filters: Allow users to filter reports by date range, account, or other criteria.
